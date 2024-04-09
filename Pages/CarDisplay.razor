@@ -1,0 +1,32 @@
+﻿@page "/cardisplay"
+@using BlazorApp1.Models
+
+<h3>Car Details</h3>
+
+<dl class="row">
+    <dt class="col-sm-3">Registration:</dt>
+    <dd class="col-sm-9">@myCar.Registration</dd>
+
+    <dt class="col-sm-3">Make:</dt>
+    <dd class="col-sm-9">@myCar.Make</dd>
+
+    <dt class="col-sm-3">Model:</dt>
+    <dd class="col-sm-9">@myCar.Model</dd>
+
+    <dt class="col-sm-3">Engine Size:</dt>
+    <dd class="col-sm-9">@myCar.EngineSize L</dd>
+
+    <dt class="col-sm-3">Engine Type:</dt>
+    <dd class="col-sm-9">@myCar.EngineType</dd>
+</dl>
+
+@code {
+    private Car myCar = new Car()
+        {
+            Registration = "XYZ 1234",
+            Make = "Toyota",
+            Model = "Corolla",
+            EngineSize = 1.8,
+            EngineType = "Hybrid"
+        };
+}

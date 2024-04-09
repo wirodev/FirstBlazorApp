@@ -1,0 +1,25 @@
+﻿@page "/currencyconversion"
+
+<h3>Currency Conversion</h3>
+
+<div>
+    Enter amount in Euros:
+    <input type="number" @bind="amountInEuros" />
+    <button @onclick="ConvertToDollars">Convert to Dollars</button>
+</div>
+
+@if (conversionResult != null)
+{
+    <p>@amountInEuros EUR is equivalent to @conversionResult USD</p>
+}
+
+@code {
+    private double amountInEuros;
+    private double? conversionResult;
+
+    private void ConvertToDollars()
+    {
+        double conversionRate = 1.08; // 1 Euro = 1.08 Dollars
+        conversionResult = amountInEuros * conversionRate;
+    }
+}

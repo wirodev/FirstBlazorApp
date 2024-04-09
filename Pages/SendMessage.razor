@@ -1,0 +1,30 @@
+﻿@page "/sendmessage"
+@using BlazorApp1.Models
+@inject IJSRuntime JSRuntime
+
+<EditForm Model="@textMessage" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="mobilePhoneNumber">Mobile Phone Number:</label>
+        <InputText id="mobilePhoneNumber" class="form-control" @bind-Value="textMessage.MobilePhoneNumber" />
+    </div>
+
+    <div class="form-group">
+        <label for="content">Message Content:</label>
+        <InputTextArea id="content" class="form-control" @bind-Value="textMessage.Content" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send</button>
+</EditForm>
+
+@code {
+    private TextMessage textMessage = new TextMessage();
+
+    private async Task HandleValidSubmit()
+    {
+        await JSRuntime.InvokeVoidAsync("console.log", $"Sending message to {textMessage.MobilePhoneNumber}: {textMessage.Content}");
+        textMessage = new TextMessage();
+    }
+}
